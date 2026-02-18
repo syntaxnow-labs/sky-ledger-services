@@ -13,42 +13,42 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class BusinessServiceImpl implements BusinessService {
 
-    private final BusinessRepo repo;
+    private final BusinessRepo businessRepo;
 
     @Override
     public List<BusinessProfile> getAllBusinessProfiles() {
-        return repo.findAll();
+        return businessRepo.findAll();
     }
 
     @Override
     public BusinessProfile getBusiness(UUID id) {
-        return repo.findById(id).orElse(null);
+        return businessRepo.findById(id).orElse(null);
     }
 
     @Override
     public BusinessProfile createProfile(BusinessProfile profile) {
-        return repo.save(profile);
+        return businessRepo.save(profile);
     }
 
     @Override
     @Transactional
     public BusinessProfile updateBusiness(UUID id, BusinessProfile profile) {
 
-        BusinessProfile existing = repo.findById(id).orElse(null);
+        BusinessProfile existing = businessRepo.findById(id).orElse(null);
         if (existing == null) {
             return null;
         }
 
         profile.setId(id);
 
-        return repo.save(profile);
+        return businessRepo.save(profile);
     }
 
     @Override
     @Transactional
     public String nextNumber(UUID businessId, String type) {
 
-        BusinessProfile b = repo.findById(businessId).orElse(null);
+        BusinessProfile b = businessRepo.findById(businessId).orElse(null);
 
         if (b == null) {
             return "BUSINESS_NOT_FOUND";
@@ -59,18 +59,14 @@ public class BusinessServiceImpl implements BusinessService {
         switch (type.toUpperCase()) {
 
             case "INVOICE" -> {
-
                 long next = b.getLastInvoiceNumber() + 1;
-
                 b.setLastInvoiceNumber(next);
                 docNo = prefix(b.getInvoicePrefix(), "INV-") + next;
             }
 
-            case "QUOTATION" ->
-            {
+            case "QUOTATION" -> {
                 long next = b.getLastQuotationNumber() + 1;
                 b.setLastQuotationNumber(next);
-
                 docNo = prefix(b.getQuotationPrefix(), "QT-") + next;
             }
 
@@ -84,13 +80,11 @@ public class BusinessServiceImpl implements BusinessService {
                 return "INVALID_TYPE";
             }
         }
-
-        repo.save(b);
+        businessRepo.save(b);
         return docNo;
     }
 
     private String prefix(String value, String def) {
-
         return (value == null || value.isBlank()) ? def : value;
     }
 }

@@ -37,13 +37,11 @@ public class BusinessController {
 
     @PutMapping("/{id}")
     public BusinessProfile updateBusiness(@PathVariable UUID id, @RequestBody BusinessProfile profile) {
-
         return businessService.updateBusiness(id, profile);
     }
 
     @GetMapping("/{businessId}/next-number/{type}")
     public String getNextNumber(@PathVariable UUID businessId, @PathVariable String type) {
-
         return businessService.nextNumber(businessId, type);
     }
 }
