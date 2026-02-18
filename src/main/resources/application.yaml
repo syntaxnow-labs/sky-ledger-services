@@ -18,14 +18,53 @@ spring:
   application:
     name: sky-ledger-services
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://auth.syntaxnow.com/realms/syntaxnow
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/businessProfile
-    username: postgres
-    password: syntaxnow
+    url: ${DB_URL:jdbc:postgresql://129.159.20.17:5432/invoicemanager}
+    username: ${DB_USERNAME:inv_mRajaSekhar.Manda@Mandas-MacBook-Pro sky-ledger-services % java -jar target/app.jar
+
+  .   ____          _            __ _ _
+  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+  ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+  =========|_|==============|___/=/_/_/_/
+  
+  :: Spring Boot ::                (v3.5.4)
+
+2026-02-18T12:37:44.480+05:30  INFO 20171 --- [sky-ledger-services] [           main] c.s.s.SkyLedgerServicesApplication       : Starting SkyLedgerServicesApplication using Java 17.0.16 with PID 20171 (/Users/RajaSekhar.Manda/ws/sn-ws/sky-ledger-services/target/app.jar started by RajaSekhar.Manda in /Users/RajaSekhar.Manda/ws/sn-ws/sky-ledger-services)
+2026-02-18T12:37:44.481+05:30  INFO 20171 --- [sky-ledger-services] [           main] c.s.s.SkyLedgerServicesApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-02-18T12:37:44.868+05:30  INFO 20171 --- [sky-ledger-services] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-18T12:37:44.891+05:30  INFO 20171 --- [sky-ledger-services] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interface.
+2026-02-18T12:37:45.078+05:30  INFO 20171 --- [sky-ledger-services] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2026-02-18T12:37:45.083+05:30  INFO 20171 --- [sky-ledger-services] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-02-18T12:37:45.083+05:30  INFO 20171 --- [sky-ledger-services] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2026-02-18T12:37:45.095+05:30  INFO 20171 --- [sky-ledger-services] [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-02-18T12:37:45.095+05:30  INFO 20171 --- [sky-ledger-services] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 598 ms
+2026-02-18T12:37:45.177+05:30  INFO 20171 --- [sky-ledger-services] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-18T12:37:45.199+05:30  INFO 20171 --- [sky-ledger-services] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+  2026-0anager_user}
+    password: ${DB_PASSWORD:password1}
     driver-class-name: org.postgresql.Driver
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: update
-    show-sql: true
+      ddl-auto: ${DDL_AUTO:update}
+    show-sql: ${SHOW_SQL:true}
+    open-in-view: false
+
+syntaxnow:
+  sso:
+    enabled: true
+    public-paths:
+      - /actuator/**
+      - /swagger-ui/**
+      - /v3/api-docs/**
+    allowed-origins:
+      - http://localhost:5173
