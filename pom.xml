@@ -14,7 +14,6 @@
 	<name>Sky Ledger Services</name>
 	<description>Implementation of Sky Ledger APIs</description>
     <dependencies>
-        <!-- SyntaxNow SSO -->
         <dependency>
             <groupId>com.syntaxnow</groupId>
             <artifactId>syntaxnow-sso-starter</artifactId>
