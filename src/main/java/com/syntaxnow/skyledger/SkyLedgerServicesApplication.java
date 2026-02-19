@@ -8,7 +8,7 @@ public class SkyLedgerServicesApplication {
 
 	public static void main(String[] args) {
 
-        System.out.println("Testing TimeZone : ");
+        System.out.println("Testing Time Zone : ");
         System.out.println(java.time.ZoneId.systemDefault());
         SpringApplication.run(SkyLedgerServicesApplication.class, args);
 
