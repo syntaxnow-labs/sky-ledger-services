@@ -12,7 +12,8 @@
 	<artifactId>sky-ledger-services</artifactId>
 	<version>0.0.1</version>
 	<name>Sky Ledger Services</name>
-	<description>Implementation of Sky Ledger APIs</description>
+	<description>Sky Ledger is a backend financial management system designed to handle business profile management and document configuration for ledger operations.
+        The project was developed using Spring Boot to build scalable and secure REST APIs that support real-world business requirements.</description>
     <dependencies>
         <dependency>
             <groupId>com.syntaxnow</groupId>
@@ -53,4 +54,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

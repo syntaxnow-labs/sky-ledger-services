@@ -41,7 +41,8 @@ public class BusinessController {
     }
 
     @GetMapping("/{businessId}/next-number/{type}")
-    public String getNextNumber(@PathVariable UUID businessId, @PathVariable String type) {
+    public String getNextNumber( @PathVariable UUID businessId, @PathVariable String type) {
         return businessService.nextNumber(businessId, type);
     }
+
 }
