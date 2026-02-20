@@ -1,6 +1,5 @@
 package com.syntaxnow.skyledger.repository;
 
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.syntaxnow.skyledger.model.BusinessProfile;
 
