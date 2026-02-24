@@ -37,3 +37,7 @@ mvn -version
 ```bash
 docker build -t sky-ledger-services:latest --build-arg SN_GITHUB_USERNAME=$SN_GITHUB_USERNAME --build-arg SN_GITHUB_TOKEN=$SN_GITHUB_TOKEN .
 ```
+Then
+```bash
+docker run -it --rm --name sky-ledger -p 9090:9090 -p 8081:8081 sky-ledger-services:latest
+```
