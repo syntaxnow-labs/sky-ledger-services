@@ -8,7 +8,54 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.UUID;
-
+/**
+ * Entity representing a Business Profile in the Sky Ledger system.
+ *
+ * <p>This entity stores complete company information required for
+ * accounting, invoicing, document generation, and email communication.
+ *
+ * <p>The BusinessProfile includes:
+ *
+ * <ul>
+ *   <li>Company details (name, email, phone, address, GST, website)</li>
+ *   <li>Branding information (logo URL)</li>
+ *   <li>Banking details</li>
+ *   <li>Document prefixes (Invoice, Quotation, Credit Note)</li>
+ *   <li>Last generated document numbers for sequential numbering</li>
+ *   <li>Default currency configuration</li>
+ *   <li>SMTP email configuration for sending invoices and quotations</li>
+ * </ul>
+ *
+ * <p>Document Numbering Logic:
+ * <ul>
+ *   <li>lastInvoiceNumber → Generates numbers like INV-0001</li>
+ *   <li>lastQuotationNumber → Generates numbers like QUO-0005</li>
+ *   <li>lastCreditNoteNumber → Generates numbers like CN-0003</li>
+ * </ul>
+ *
+ * <p>Technical Details:
+ * <ul>
+ *   <li>Uses UUID as primary key</li>
+ *   <li>Email field must be unique</li>
+ *   <li>Currency stored using EnumType.STRING</li>
+ *   <li>UUID auto-generated using GenerationType.UUID</li>
+ *   <li>Supports Jakarta Validation annotations</li>
+ *   <li>Uses Lombok to reduce boilerplate code</li>
+ * </ul>
+ *
+ * <p>This entity is mapped to the "businesses" table and is used by:
+ * <ul>
+ *   <li>Repository Layer</li>
+ *   <li>Service Layer</li>
+ *   <li>Controller Layer</li>
+ * </ul>
+ *
+ * <p>Project: Sky Ledger Services – Accounting & Business Management System
+ *
+ * @author
+ *   Korada Jaya Santosh
+ * @since 1.0
+ */
 @Entity
 @Data
 @NoArgsConstructor
