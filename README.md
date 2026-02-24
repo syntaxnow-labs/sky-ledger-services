@@ -31,3 +31,9 @@ Verify:
 ```bash
 java -version
 mvn -version
+```
+
+## Before raising a PR validate this 
+```bash
+docker build -t sky-ledger-services:latest --build-arg SN_GITHUB_USERNAME=$SN_GITHUB_USERNAME --build-arg SN_GITHUB_TOKEN=$SN_GITHUB_TOKEN .
+```
