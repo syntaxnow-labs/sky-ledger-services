@@ -41,5 +41,3 @@ Then
 ```bash
 docker run -it --rm --name sky-ledger -p 9090:9090 -p 8081:8081 sky-ledger-services:latest
 ```
-
-False Build Manual Commit.
